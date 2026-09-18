@@ -1,0 +1,5 @@
+# Reflection
+
+## 1. The process that an HTTP request takes from a browser to my GitHub Pages
+
+When someone navigates to "https://inkury.github.io" in a web browser, the browser first checks whether the page is in its own cache. If not, it resolves the address through DNS. The local DNS resolver checks its cache, and if it doesn't find one, it asks the root DNS server, then the ".io" TLD server, and lastly GitHub's DNS server. GitHub's DNS provides the resolver with the IP address of the nearest CDN server. The browser then opens a TCP connection on port 443 with a three way handshake. Next it does a TLS handshake. Where the browser receives the SSL certificate for "inkury.github.io", checks it, and establishes encryption between the two. Then, the browser sends a GET request for "index.html" with the header "Host: inkury.github.io" so that GitHub knows which site is being requested, and GitHub Pages serves the page "index.html" with a "200 OK".
