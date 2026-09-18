@@ -1,0 +1,209 @@
+/* Element selectors */
+
+body {
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  background-color: #1b1c1f;
+  color: #e6e6e6;
+  line-height: 1.7;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+}
+
+/* Left side with photo and name */
+header {
+  grid-row: 1 / 4;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+header img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  z-index: 0;
+}
+
+/* Dark gradient so the name shows up over the photo */
+header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #111 10%, transparent 60%);
+  z-index: 1;
+}
+
+header h1,
+header p {
+  position: relative;
+  z-index: 2;
+  margin: 4px 0;
+}
+
+header h1 {
+  font-size: 2.2em;
+  color: white;
+}
+
+header a {
+  color: #bbbbbb;
+  font-size: 0.9em;
+}
+
+nav {
+  background-color: #222327;
+  border-bottom: 1px solid #34363b;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 18px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+nav a {
+  color: #9a9a9a;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+nav a:hover {
+  color: #e0263a;
+}
+
+main {
+  background-color: #222327;
+  padding: 10px 40px 40px;
+}
+
+section {
+  padding: 25px 0;
+  border-bottom: 1px solid #34363b;
+}
+
+h2 {
+  font-size: 2.2em;
+  text-transform: capitalize;
+  color: #e0263a;
+  margin: 0 0 10px;
+}
+
+h3 {
+  color: #ff8c42;
+  margin-bottom: 0;
+}
+
+h4 {
+  color: #ff8c42;
+}
+
+article {
+  margin-bottom: 25px;
+}
+
+li {
+  color: white;
+  margin-bottom: 4px;
+}
+
+/* Specificity conflict: this rule loses to .tagline below */
+p {
+  color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border-bottom: 1px solid #34363b;
+  padding: 12px 10px;
+  text-align: left;
+}
+
+th {
+  color: #e0263a;
+  border-bottom: 2px solid #e0263a;
+}
+
+td {
+  color: white;
+}
+
+footer {
+  background-color: #1b1c1f;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.85em;
+}
+
+/* Class selectors */
+
+/*
+  Specificity conflict:
+  The tagline is a <p>, so both "p" and ".tagline" set its color.
+  p = (0,0,1), .tagline = (0,1,0)
+  .tagline wins because a class is more specific than an element,
+  so the tagline is red instead of white.
+*/
+.tagline {
+  color: #e0263a;
+  font-size: 1em;
+}
+
+.date {
+  color: #ff8c42;
+  font-style: italic;
+  font-size: 0.9em;
+  margin-top: 2px;
+}
+
+/* ID selectors */
+
+#about p {
+  font-size: 1.05em;
+}
+
+#languages ul {
+  display: flex;
+  gap: 30px;
+  padding-left: 20px;
+}
+
+/* Mobile layout */
+
+@media (max-width: 800px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    grid-row: auto;
+    position: relative;
+    height: 450px;
+  }
+
+  nav ul,
+  main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
