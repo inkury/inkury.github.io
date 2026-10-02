@@ -212,4 +212,13 @@ footer {
   h2 {
     font-size: 1.5rem;
   }
+  /* Keep the table from forcing horizontal scroll */
+  table {
+    table-layout: fixed;
+  }
+
+  th,
+  td {
+    overflow-wrap: break-word;
+  }
 }
